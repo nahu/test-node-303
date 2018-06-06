@@ -21,7 +21,7 @@ module.exports = {
   },
 
   retrieve(req, res) {
-    if (!Number.isInteger(req.params.id)) {
+    if (!Number.isInteger(req.params.id * 1)) {
       return res.status(400).send({
         message: 'ID must be integer',
       });
@@ -40,7 +40,7 @@ module.exports = {
   },
 
   update(req, res) {
-    if (!Number.isInteger(req.params.id)) {
+    if (!Number.isInteger(req.params.id * 1)) {
       return res.status(400).send({
         message: 'ID must be integer',
       });
@@ -62,7 +62,7 @@ module.exports = {
   },
 
   destroy(req, res) {
-    if (!Number.isInteger(req.params.id)) {
+    if (!Number.isInteger(req.params.id * 1)) {
       return res.status(400).send({
         message: 'ID must be integer',
       });

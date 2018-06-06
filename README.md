@@ -77,7 +77,7 @@ The API of the model (_review_).
 
   `GET`
   
-*  **URL Params**
+* **URL Params**
 
    **Required:**
  
@@ -93,7 +93,7 @@ The API of the model (_review_).
     **Content:** 
   ```
     { 
-      id : 12,
+      id : 1,
       title : "Code Review",
       author: "Matt",
       content: "This is amazing!",
@@ -104,10 +104,222 @@ The API of the model (_review_).
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 404 <br />
     **Content:** 
   ```
     { 
       message: "Review Not Found"
     }
   ```     
+  * **Code:** 400 <br />
+    **Content:** 
+  ```
+    { 
+      message: "ID must be integer"
+    }
+  ```     
+
+### Show All Reviews
+
+  Returns json data about all reviews.
+
+* **URL**
+
+  /reviews
+
+* **Method:**
+
+  `GET`
+  
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+  ```
+    [
+      { 
+        id : 1,
+        title : "Code Review",
+        author: "Matt",
+        content: "This is amazing!",
+        createdAt: "2018-06-06T20:21:45.343Z",
+        updatedAt: "2018-06-06T20:21:45.343Z"
+      },
+      { 
+        id : 2,
+        title : "Ramdon review",
+        author: "Matt",
+        content: "This is amazing!",
+        createdAt: "2018-06-06T20:21:45.343Z",
+        updatedAt: "2018-06-06T20:21:45.343Z"
+      }
+    ]
+
+  ```
+ 
+* **Error Response:**
+
+  None
+
+### Create a Review
+
+  Returns json data about a review created.
+
+* **URL**
+
+  /reviews
+
+* **Method:**
+
+  `POST`
+  
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  ```
+    { 
+      title : "Code Review",
+      author: "Matt",
+      content: "This is amazing!"
+    }
+  ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** 
+  ```
+    { 
+      id : 1,
+      title : "Code Review",
+      author: "Matt",
+      content: "This is amazing!",
+      createdAt: "2018-06-06T20:21:45.343Z",
+      updatedAt: "2018-06-06T20:21:45.343Z"
+    }
+  ```
+ 
+* **Error Response:**
+    
+  * **Code:** 400 <br />
+    **Content:** 
+  ```
+    { 
+      message: "Bad Request"
+    }
+  ```
+### Update a Review
+
+  Returns json data about an updated review.
+
+* **URL**
+
+  /reviews/:id
+
+* **Method:**
+
+  `PUT`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  ```
+    { 
+      title : "Code Review 2",
+      author: "Matt J.",
+      content: "This is amazing!"
+    }
+  ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+  ```
+    { 
+      id : 1,
+      title : "Code Review 2",
+      author: "Matt J",
+      content: "This is amazing!",
+      createdAt: "2018-06-06T20:21:45.343Z",
+      updatedAt: "2018-06-06T20:21:45.343Z"
+    }
+  ```
+ 
+* **Error Response:**
+
+  * **Code:** 404 <br />
+    **Content:** 
+  ```
+    { 
+      message: "Review Not Found"
+    }
+  ```     
+  * **Code:** 400 <br />
+    **Content:** 
+  ```
+    { 
+      message: "ID must be integer"
+    }
+  ```
+
+### Delete a Review
+
+  Deletes a Review.
+
+* **URL**
+
+  /reviews/:id
+
+* **Method:**
+
+  `DELETE`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 204 <br />
+    **Content:** 
+    No Content
+ 
+* **Error Response:**
+
+  * **Code:** 404 <br />
+    **Content:** 
+  ```
+    { 
+      message: "Review Not Found"
+    }
+  ```     
+  * **Code:** 400 <br />
+    **Content:** 
+  ```
+    { 
+      message: "ID must be integer"
+    }
+  ```
