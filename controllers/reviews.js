@@ -21,6 +21,11 @@ module.exports = {
   },
 
   retrieve(req, res) {
+    if (!Number.isInteger(req.params.id)) {
+      return res.status(400).send({
+        message: 'ID must be integer',
+      });
+    }
     return Reviews
       .findById(req.params.id, {})
       .then((review) => {
@@ -35,6 +40,11 @@ module.exports = {
   },
 
   update(req, res) {
+    if (!Number.isInteger(req.params.id)) {
+      return res.status(400).send({
+        message: 'ID must be integer',
+      });
+    }
     return Reviews
       .findById(req.params.id, {})
       .then((review) => {
@@ -52,11 +62,16 @@ module.exports = {
   },
 
   destroy(req, res) {
+    if (!Number.isInteger(req.params.id)) {
+      return res.status(400).send({
+        message: 'ID must be integer',
+      });
+    }
     return Reviews
       .findById(req.params.id)
       .then((review) => {
         if (!review) {
-          return res.status(400).send({
+          return res.status(404).send({
             message: 'Review Not Found',
           });
         }
